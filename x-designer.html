@@ -4,6 +4,8 @@ Use of this source code is governed by a BSD-style
 license that can be found in the LICENSE file.
 -->
 <link rel="import" href="../../polymer-elements/polymer-layout/polymer-layout.html">
+<link rel="import" href="../../polymer-elements/polymer-flex-layout/polymer-flex-layout.html">
+<link rel="import" href="../../polymer-ui-elements/polymer-ui-splitter/polymer-ui-splitter.html">
 <link rel="import" href="../x-designable/x-designable.html">
 <link rel="import" href="../x-palette/x-palette.html">
 <link rel="import" href="../x-tree/x-tree.html">
@@ -21,65 +23,23 @@ license that can be found in the LICENSE file.
           outline: 0;
         }
       }
-      /*
-      #palette {
-        position: absolute;
-        top: 0;
-        width: 264px;
-        bottom: 0;
-        left: 0;
-        -webkit-transition: left 0.4s;
-        transition: left 0.4s;
-        z-index: 1;
-        box-shadow: 5px 0 8px rgba(0, 0, 0, 0.16);
-      }
-      #canvas {
-        position: absolute;
-        top: 0px;
-        right: 0;
-        bottom: 0;
-        left: 264px;
-        background-color: white;
-        overflow: hidden;
-        -webkit-transition: left 0.4s;
-        transition: left 0.4s;
-      }
-      #designElement {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-      .selected-element {
-        outline: solid 10px rgba(72, 154, 254, 0.20);
-        outline-offset: -2px;
-      }
-      .tab-selected {
-        z-index: 100;
-      }
-      #palette.maximized {
-        left: -264px;
-      }
-      #canvas.maximized {
-        left: 0px;
-      }
-      */
-      #palette {
-        width: 264px;
-        box-shadow: 5px 0 8px rgba(0, 0, 0, 0.16);
-        z-index: 1;
-        -webkit-transition: left 0.4s;
-        transition: left 0.4s;
-      }
       #canvas {
         background-color: white;
         overflow: hidden;
+        -webkit-transition: left 0.4s;
+        transition: left 0.4s;
+      }
+      #tools {
+        width: 284px;
+      }
+      #palette {
+        box-shadow: 5px 0 8px rgba(0, 0, 0, 0.16);
+        z-index: 1;
         -webkit-transition: left 0.4s;
         transition: left 0.4s;
       }
       #tree {
-        width: 250px;
+        height: 300px;
       }
       .selected-element {
         outline: solid 10px rgba(72, 154, 254, 0.20);
@@ -89,10 +49,14 @@ license that can be found in the LICENSE file.
 
     <x-meta id="meta" categories="{{elements}}"></x-meta>
 
-    <polymer-layout></polymer-layout>
-    <x-palette id="palette" elements="{{elements}}" canvas="{{$.canvas}}" on-palette-drag="paletteDrag"></x-palette>
+    <polymer-flex-layout></polymer-flex-layout>
+    <section id="tools">
+      <polymer-flex-layout vertical></polymer-flex-layout>
+      <x-palette flex id="palette" elements="{{elements}}" canvas="{{$.canvas}}" on-palette-drag="paletteDrag"></x-palette>
+      <polymer-ui-splitter direction="down"></polymer-ui-splitter>
+      <x-tree id="tree" canvas="{{$.canvas}}" selected="{{selected}}"></x-tree>
+    </section>
     <x-designable flex id="canvas" tabIndex="-1" selected="{{selected}}" on-design-change="designChange"></x-designable>
-    <x-tree id="tree" canvas="{{$.canvas}}" selected="{{selected}}"></x-tree>
 
   </template>
   <script>
