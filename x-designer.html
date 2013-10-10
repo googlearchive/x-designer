@@ -73,6 +73,12 @@ license that can be found in the LICENSE file.
       designChange: function() {
         this.$.tree.update();
       },
+      deleteElement: function() {
+        this.$.canvas.deleteElement();
+      },
+      selectParentElement: function() {
+        this.$.canvas.selectParentElement();
+      },
       maximizedChanged: function() {
         this.$.palette.classList.toggle('maximized', this.maximized);
         this.$.canvas.classList.toggle('maximized', this.maximized);
