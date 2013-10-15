@@ -120,12 +120,11 @@ license that can be found in the LICENSE file.
             }
           );
         });
-      }
-      /*
-      applyPropertyBinding: function(obj, name, path) {
-        this.$.designElement.applyPropertyBinding(obj, name, path);
       },
-      applySource: function(source) {
+      applyPropertyBinding: function(obj, name, path) {
+        this.$.canvas.applyPropertyBinding(obj, name, path);
+      }
+      /*applySource: function(source) {
         this.$.designElement = this.$.designElement.applySource(source);
       },
       sourceApplied: function(event, node) {
