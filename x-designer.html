@@ -71,6 +71,7 @@ license that can be found in the LICENSE file.
         this.$.canvas.drag(drag);
       },
       designChange: function() {
+        this.$.canvas.update();
         this.$.tree.update();
       },
       deleteElement: function() {
