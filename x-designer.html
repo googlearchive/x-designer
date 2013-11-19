@@ -74,6 +74,13 @@ license that can be found in the LICENSE file.
         this.$.canvas.update();
         this.$.tree.update();
       },
+      createElement: function(tag) {
+        var meta = this.$.meta.byId(tag);
+        var element = meta.createElement();
+        this.$.canvas.appendChild(element);
+        this.$.canvas.decorateElement(element);
+        this.selected = element;
+      },
       deleteElement: function() {
         this.$.canvas.deleteElement();
       },
@@ -104,7 +111,7 @@ license that can be found in the LICENSE file.
           Platform.flush();
         }
       },
-      loadLinks: function(urls) {
+      loadLinks: function(urls, callback) {
         var doc = document.createDocumentFragment();
         urls.forEach(function(url) {
           var link = doc.appendChild(document.createElement('link'));
@@ -120,7 +127,8 @@ license that can be found in the LICENSE file.
               CustomElements.parser.parse(link.content);
             }
           );
-        });
+          callback && callback();
+        }.bind(this));
       },
       applyPropertyBinding: function(obj, name, path) {
         this.$.canvas.applyPropertyBinding(obj, name, path);
