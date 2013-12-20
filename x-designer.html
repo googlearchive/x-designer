@@ -31,6 +31,10 @@ license that can be found in the LICENSE file.
         width: 284px;
         z-index: 1;
         box-shadow: 5px 0 8px rgba(0, 0, 0, 0.16);
+        transition: width 0.3s;
+      }
+      #tools.maximized {
+        width: 0;
       }
       #palette {
         -webkit-transition: left 0.4s;
@@ -38,8 +42,9 @@ license that can be found in the LICENSE file.
       }
       #tree {
         height: 300px;
+        overflow: hidden;
       }
-      .selected-element {
+      #canvas:not(.maximized) .selected-element {
         outline: solid 10px rgba(72, 154, 254, 0.20);
         outline-offset: -2px;
       }
@@ -86,8 +91,9 @@ license that can be found in the LICENSE file.
         this.$.canvas.selectParentElement();
       },
       maximizedChanged: function() {
-        this.$.palette.classList.toggle('maximized', this.maximized);
-        this.$.canvas.classList.toggle('maximized', this.maximized);
+        this.$.tools.classList.toggle('maximized', this.maximized);
+        this.$.canvas.classList.toggle('maximized', this.maximized)
+        this.$.canvas.dragDisabled = this.maximized;
       },
       inspectTarget: function(event) {
         var t = event.target;
