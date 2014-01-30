@@ -122,23 +122,7 @@ license that can be found in the LICENSE file.
         }
       },
       loadLinks: function(urls, callback) {
-        var doc = document.createDocumentFragment();
-        urls.forEach(function(url) {
-          var link = doc.appendChild(document.createElement('link'));
-          link.rel = "import";
-          link.href = url;
-        });
-        // load-all-links in document method should be factored somewhere
-        // very similar method used in x-meta
-        HTMLImports.importer.load(doc, function() {
-          doc.querySelectorAll('link').array().forEach(
-            function(link) {
-              HTMLImports.parser.parse(link.content);
-              CustomElements.parser.parse(link.content);
-            }
-          );
-          callback && callback();
-        }.bind(this));
+        Polymer.import(urls, callback);
       },
       loadHtml: function(html) {
         this.$.canvas.loadHtml(html);
