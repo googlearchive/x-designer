@@ -2,11 +2,12 @@
   "name": "x-designer",
   "private": true,
   "dependencies": {
-    "polymer-layout": "Polymer/polymer-layout#master",
-    "polymer-flex-layout": "Polymer/polymer-flex-layout#master",
-    "polymer-ui-splitter": "Polymer/polymer-ui-splitter#master",
-    "x-designable": "Polymer/x-designable#master",
-    "x-palette": "Polymer/x-palette#master",
-    "x-tree": "Polymer/x-tree#master"
-  }
+    "polymer-layout": "Polymer/polymer-layout#0.2.1",
+    "polymer-flex-layout": "Polymer/polymer-flex-layout#0.2.1",
+    "polymer-ui-splitter": "Polymer/polymer-ui-splitter#0.2.1",
+    "x-designable": "Polymer/x-designable#0.2.1",
+    "x-palette": "Polymer/x-palette#0.2.1",
+    "x-tree": "Polymer/x-tree#0.2.1"
+  },
+  "version": "0.2.1"
 }
